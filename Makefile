@@ -5,9 +5,14 @@ format:
 	black *.py
 
 lint:
-	pylint --disable=R,C --ignore-patterns=test_.*?py *.py
+	ruff check *.py my_lib/*.py
 
 test:
-	python -m pytest -cov=main test_main.py
+	python -m pytest -vv --cov=main --cov=my_lib test_*.py
 
-all: install format lint test
+container-lint:
+	docker run --rm -i hadolint/hadolint < Dockerfile
+
+refactor: format lint
+
+all: install lint test format 
