@@ -41,7 +41,7 @@ def create_dataframe_with_schema(spark, table, columns):
     static_data.spark_dataframes[table] = spark.createDataFrame([], schema)
 
 
-# load the csv file and insert into a new sqlite3 database
+# load the csv file and store in shared memory
 def transform_n_load(
     local_dataset: str,
     new_data_tables: dict,
