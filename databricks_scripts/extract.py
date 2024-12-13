@@ -1,5 +1,7 @@
-from my_lib.util import log_tests
-from my_lib.extract import extract
+# from my_lib.util import log_tests
+# from my_lib.extract import extract
+%run ../my_lib/util
+%run ../my_lib/extract
 import os
 
 
