@@ -10,7 +10,10 @@ def extract(
     file_name: str,
 ):
     """ "Extract a url to a file path"""
-    file_path = "/dbfs/tmp/data/" + file_name
+    file_path = (
+        "/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/data/"
+        + file_name
+    )
     with requests.get(url) as r:
         with open(file_path, "wb") as f:
             f.write(r.content)
