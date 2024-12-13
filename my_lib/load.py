@@ -121,6 +121,17 @@ def transform_n_load(
             spark.createDataFrame(value, static_data.spark_dataframes[key].columns)
         )
 
+    # save data
+    static_data.spark_dataframes["indicator"].write.format("delta").mode(
+        "overwrite"
+    ).saveAsTable("indicator")
+    static_data.spark_dataframes["geo_data"].write.format("delta").mode(
+        "overwrite"
+    ).saveAsTable("geo_data")
+    static_data.spark_dataframes["air_quality"].write.format("delta").mode(
+        "overwrite"
+    ).saveAsTable("air_quality")
+
     static_data.spark_dataframes["indicator"].show()
     static_data.spark_dataframes["geo_data"].show()
     static_data.spark_dataframes["air_quality"].show()
