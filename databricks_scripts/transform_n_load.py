@@ -1,5 +1,9 @@
-from my_lib.util import log_tests
-from my_lib.load import transform_n_load
+import sys
+
+sys.path.append("/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/my_lib/")
+
+from util import log_tests
+from load import transform_n_load
 
 
 def test_transform_and_load():

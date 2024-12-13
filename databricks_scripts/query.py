@@ -1,5 +1,9 @@
-from my_lib.lib import execute_read_query
-from my_lib.util import save_output
+import sys
+
+sys.path.append("/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/my_lib/")
+
+from lib import execute_read_query
+from util import save_output
 
 
 script_to_execute = """
