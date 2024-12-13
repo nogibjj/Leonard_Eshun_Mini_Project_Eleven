@@ -1,4 +1,4 @@
-from my_lib.extract import extract
+from my_lib.extract_data import extract
 from my_lib.load import transform_n_load
 from my_lib.util import log_tests
 import os
@@ -208,9 +208,9 @@ url = f"https://{server_h}/api/2.0"
 if __name__ == "__main__":
     test_extract()
     test_transform_and_load()
-    test_read_data()
-    test_read_all_data()
-    test_save_data()
-    test_delete_data()
-    test_get_table_columns()
+    # test_read_data()
+    # test_read_all_data()
+    # test_save_data()
+    # test_delete_data()
+    # test_get_table_columns()
     # test_databricks()

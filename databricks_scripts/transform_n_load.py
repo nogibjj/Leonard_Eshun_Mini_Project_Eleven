@@ -6,7 +6,7 @@ from util import log_tests
 from load import transform_n_load
 
 
-def test_transform_and_load():
+def transform_and_load():
     log_tests("Transform and Load Test", header=True)
     transform_n_load(
         local_dataset="air_quality.csv",
@@ -54,4 +54,4 @@ def test_transform_and_load():
 
 
 if __name__ == "__main__":
-    test_transform_and_load()
+    transform_and_load()

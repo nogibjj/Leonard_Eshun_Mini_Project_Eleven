@@ -47,11 +47,23 @@ def transform_n_load(
     new_data_tables: dict,
     new_lookup_tables: dict,  # dict of dict - {name :{column:type},name :{column:type}}
     column_map: dict,
+    on_databricks=False,
 ):
     """ "Transforms and Loads data into the PySpark DataFrames"""
 
     # load the data from the csv
-    reader = csv.reader(open("data/" + local_dataset, newline=""), delimiter=",")
+    reader = csv.reader(
+        open(
+            (
+                "/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/data/"
+                if on_databricks
+                else "./data/"
+            )
+            + local_dataset,
+            newline="",
+        ),
+        delimiter=",",
+    )
 
     # Initialize SparkSession
     spark = SparkSession.builder.appName("CreateDataFrameWithSchema").getOrCreate()
