@@ -25,6 +25,7 @@ def do_extract():
     extract(
         "https://data.cityofnewyork.us/resource/c3uy-2p5r.csv?$limit=200000",
         "air_quality.csv",
+        on_databricks=True,
     )
 
     log_tests("Testing if CSV file exists...")

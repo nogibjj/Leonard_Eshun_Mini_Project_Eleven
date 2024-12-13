@@ -48,6 +48,7 @@ def transform_and_load():
             "fn_geo_id": 6,
             "fn_indicator_id": 1,
         },
+        on_databricks=True,
     )
     log_tests("Transform and Load Test Successful", last_in_group=True)
     print("Transform and Load Test Successful")
