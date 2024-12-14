@@ -2,7 +2,6 @@ from my_lib.extract_data import extract
 from my_lib.load import transform_n_load
 from my_lib.util import log_tests
 import os
-import requests
 from dotenv import load_dotenv
 
 
