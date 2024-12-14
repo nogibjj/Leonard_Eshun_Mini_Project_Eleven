@@ -1,7 +1,4 @@
 import sys
-
-sys.path.append("/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/my_lib/")
-
 from util import log_tests
 from load import static_data
 from pyspark.sql import SparkSession
@@ -11,6 +8,8 @@ from pyspark.sql.types import (
     DateType,
     FloatType,
 )
+
+sys.path.append("/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/my_lib/")
 
 
 def get_a_session():

@@ -1,7 +1,3 @@
-"""
-Transform the extracted data 
-"""
-
 import json
 from pyspark.sql import SparkSession
 from pyspark.sql.types import (
