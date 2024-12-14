@@ -15,6 +15,17 @@ The requirements are:
 1. README.md with setup and usage instructions
 
 
+## Databricks
+Three tasks were created to do data extraction, transformation and loading, and query
+![alt text](images/the_task.png)
+
+The run sequentially from left to right and any failure stops subsequent tasks from running.
+![alt text](images/the_job.png)
+
+After a number of executions and debugging, they all executed successfully.
+![alt text](images/the_execution.png)
+
+
 ## The functions and what they do
 
 1. **extract** to read and extract an external csv file via its url and save to file in the /data folder using the name you give it. 
