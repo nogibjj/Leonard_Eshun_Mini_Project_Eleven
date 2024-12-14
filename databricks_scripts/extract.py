@@ -23,8 +23,8 @@ def do_extract():
 
     log_tests("Extracting data and saving...")
     extract(
-        "https://data.cityofnewyork.us/resource/c3uy-2p5r.csv?$limit=200000",
-        "air_quality.csv",
+        url="https://data.cityofnewyork.us/resource/c3uy-2p5r.csv?$limit=200000",
+        file_name="air_quality.csv",
         on_databricks=True,
     )
 

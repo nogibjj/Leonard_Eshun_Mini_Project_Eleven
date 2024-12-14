@@ -13,7 +13,12 @@ from pyspark.sql.types import (
     FloatType,
 )
 import csv
-from my_lib.util import log_tests
+
+import sys
+
+sys.path.append("/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/my_lib/")
+
+from util import log_tests
 
 
 class static_data:
@@ -121,16 +126,64 @@ def transform_n_load(
             spark.createDataFrame(value, static_data.spark_dataframes[key].columns)
         )
 
+    # Do columns again for int and float they complain and cause merge errors
+    static_data.spark_dataframes["geo_data"] = static_data.spark_dataframes[
+        "geo_data"
+    ].withColumn(
+        "geo_id", static_data.spark_dataframes["geo_data"]["geo_id"].cast(IntegerType())
+    )
+
+    static_data.spark_dataframes["air_quality"] = static_data.spark_dataframes[
+        "air_quality"
+    ].withColumn(
+        "fn_indicator_id",
+        static_data.spark_dataframes["air_quality"]["fn_indicator_id"].cast(
+            IntegerType()
+        ),
+    )
+
+    static_data.spark_dataframes["air_quality"] = static_data.spark_dataframes[
+        "air_quality"
+    ].withColumn(
+        "air_quality_id",
+        static_data.spark_dataframes["air_quality"]["air_quality_id"].cast(
+            IntegerType()
+        ),
+    )
+
+    static_data.spark_dataframes["air_quality"] = static_data.spark_dataframes[
+        "air_quality"
+    ].withColumn(
+        "fn_geo_id",
+        static_data.spark_dataframes["air_quality"]["fn_geo_id"].cast(IntegerType()),
+    )
+
+    static_data.spark_dataframes["air_quality"] = static_data.spark_dataframes[
+        "air_quality"
+    ].withColumn(
+        "data_value",
+        static_data.spark_dataframes["air_quality"]["data_value"].cast(FloatType()),
+    )
+
+    # Saving a table name of indicator will fail
+    static_data.spark_dataframes["indicator"] = static_data.spark_dataframes[
+        "indicator"
+    ].withColumn(
+        "indicator_id",
+        static_data.spark_dataframes["indicator"]["indicator_id"].cast(IntegerType()),
+    )
+
     # save data
-    static_data.spark_dataframes["indicator"].write.format("delta").mode(
-        "overwrite"
-    ).saveAsTable("indicator")
+
     static_data.spark_dataframes["geo_data"].write.format("delta").mode(
         "overwrite"
-    ).saveAsTable("geo_data")
+    ).saveAsTable("tb_geo_data")
     static_data.spark_dataframes["air_quality"].write.format("delta").mode(
         "overwrite"
-    ).saveAsTable("air_quality")
+    ).saveAsTable("tb_air_quality")
+    static_data.spark_dataframes["indicator"].write.format("delta").mode(
+        "overwrite"
+    ).saveAsTable("tb_indicator")
 
     static_data.spark_dataframes["indicator"].show()
     static_data.spark_dataframes["geo_data"].show()

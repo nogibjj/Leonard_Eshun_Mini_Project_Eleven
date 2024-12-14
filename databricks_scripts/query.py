@@ -30,7 +30,7 @@ def query(on_databricks=False):
     save_output(result_df.toPandas().to_markdown())
     result_df.write.csv(
         (
-            "/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/data/"
+            "/Workspace/Workspace/Shared/Leonard_Eshun_Mini_Project_Eleven/data"
             if on_databricks
             else "./Aggregation_Query_Result"
         ),
@@ -40,4 +40,4 @@ def query(on_databricks=False):
 
 
 if __name__ == "__main__":
-    query()
+    query(True)
